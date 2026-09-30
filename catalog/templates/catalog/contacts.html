@@ -1,36 +1,29 @@
 {% extends 'catalog/base.html' %}
 
-{% block title %}Главная — StoreFront{% endblock %}
+{% block title %}Контакты — StoreFront{% endblock %}
 
 {% block content %}
-<div class="text-center">
-    <h1>Добро пожаловать в StoreFront!</h1>
-    <p class="lead">Ваш лучший выбор товаров по выгодным ценам.</p>
-    <div class="row mt-4">
-        <div class="col-md-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Широкий ассортимент</h5>
-                    <p class="card-text">Товары на любой вкус и бюджет.</p>
-                </div>
-            </div>
+<div class="container mt-4">
+    <h1>Наши контакты</h1>
+
+    {% if contact %}
+        <div class="card p-4 mb-3">
+            <h3>{{ contact.name }}</h3>
+            <p><strong>Телефон:</strong> {{ contact.phone }}</p>
+            {% if contact.message %}
+                <p><strong>Комментарий:</strong> {{ contact.message }}</p>
+            {% endif %}
         </div>
-        <div class="col-md-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Быстрая доставка</h5>
-                    <p class="card-text">Доставим заказ в кратчайшие сроки.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Гарантия качества</h5>
-                    <p class="card-text">Только проверенные товары от надежных поставщиков.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% else %}
+        <p class="text-danger">
+            В базе нет контактов. Пожалуйста, зайдите в админку (<code>/admin/</code>) и создайте одну запись в разделе «Контакты».
+        </p>
+    {% endif %}
+
+    <hr>
+
+    {% if success %}
+        <div class="alert alert-success">Спасибо, ваше сообщение отправлено!</div>
+    {% endif %}
 </div>
 {% endblock %}

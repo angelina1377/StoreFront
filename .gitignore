@@ -4,3 +4,7 @@ __pycache__/
 .DS_Store
 .idea/
 node_modules/
+.env
+db.sqlite3
+media/
+
