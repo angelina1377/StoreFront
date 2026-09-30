@@ -8,9 +8,17 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "psycopg2-binary (>=2.9.13,<3.0.0)",
+    "pillow (>=12.3.0,<13.0.0)",
+    "python-dotenv (>=1.2.3,<2.0.0)"
 ]
 
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "ipython (>=9.17.1,<10.0.0)"
+]
