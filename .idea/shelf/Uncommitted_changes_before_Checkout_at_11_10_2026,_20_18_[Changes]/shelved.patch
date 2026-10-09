@@ -1,0 +1,85 @@
+Index: catalog/admin.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from django.contrib import admin\nfrom .models import Product\n\n\n@admin.register(Product)\nclass ProductAdmin(admin.ModelAdmin):\n    # В список выводим только текстовые поля и цену. Картинку так выводить нельзя.\n    list_display = ('name', 'price', 'has_image')\n    search_fields = ('name',)\n    list_filter = ('price',)\n\n    # Этот метод нужен, чтобы красиво показать наличие картинки в таблице\n    def has_image(self, obj):\n        if obj.image:\n            return \"✅ Есть фото\"\n        return \"❌ Нет фото\"\n\n    # Даем понятное название колонке вместо имени метода\n    has_image.short_description = 'Фото'\n\n
+===================================================================
+diff --git a/catalog/admin.py b/catalog/admin.py
+--- a/catalog/admin.py	(revision d6489f4e076f6ef9a1504be8ec2df44ae2ea5578)
++++ b/catalog/admin.py	(date 1791739080082)
+@@ -1,20 +1,0 @@
+-from django.contrib import admin
+-from .models import Product
+-
+-
+-@admin.register(Product)
+-class ProductAdmin(admin.ModelAdmin):
+-    # В список выводим только текстовые поля и цену. Картинку так выводить нельзя.
+-    list_display = ('name', 'price', 'has_image')
+-    search_fields = ('name',)
+-    list_filter = ('price',)
+-
+-    # Этот метод нужен, чтобы красиво показать наличие картинки в таблице
+-    def has_image(self, obj):
+-        if obj.image:
+-            return "✅ Есть фото"
+-        return "❌ Нет фото"
+-
+-    # Даем понятное название колонке вместо имени метода
+-    has_image.short_description = 'Фото'
+-
+Index: catalog/urls.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># catalog/urls.py\nfrom django.urls import path\nfrom . import views\n\nurlpatterns = [\n    # Путь к списку товаров. Имя 'products' обязательно для редиректа.\n    path('products/', views.product_list, name='products'),\n\n    # Путь для добавления товара\n    path('add/', views.add_product, name='add_product'),\n]\n\n
+===================================================================
+diff --git a/catalog/urls.py b/catalog/urls.py
+--- a/catalog/urls.py	(revision d6489f4e076f6ef9a1504be8ec2df44ae2ea5578)
++++ b/catalog/urls.py	(date 1791739080086)
+@@ -1,12 +1,0 @@
+-# catalog/urls.py
+-from django.urls import path
+-from . import views
+-
+-urlpatterns = [
+-    # Путь к списку товаров. Имя 'products' обязательно для редиректа.
+-    path('products/', views.product_list, name='products'),
+-
+-    # Путь для добавления товара
+-    path('add/', views.add_product, name='add_product'),
+-]
+-
+Index: catalog/forms.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from django import forms\nfrom .models import Product\n\nclass ProductForm(forms.ModelForm):\n    class Meta:\n        model = Product\n        fields = ['name', 'description', 'price', 'image']\n
+===================================================================
+diff --git a/catalog/forms.py b/catalog/forms.py
+--- a/catalog/forms.py	(revision d6489f4e076f6ef9a1504be8ec2df44ae2ea5578)
++++ b/catalog/forms.py	(date 1791739080081)
+@@ -1,7 +1,0 @@
+-from django import forms
+-from .models import Product
+-
+-class ProductForm(forms.ModelForm):
+-    class Meta:
+-        model = Product
+-        fields = ['name', 'description', 'price', 'image']
+Index: catalog/models.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from django.db import models\n\nclass Product(models.Model):\n    name = models.CharField(max_length=200)\n    description = models.TextField()\n    price = models.DecimalField(max_digits=10, decimal_places=2)\n    image = models.ImageField(upload_to='products/', blank=True, null=True)\n\n    def __str__(self):\n        return self.name\n
+===================================================================
+diff --git a/catalog/models.py b/catalog/models.py
+--- a/catalog/models.py	(revision d6489f4e076f6ef9a1504be8ec2df44ae2ea5578)
++++ b/catalog/models.py	(date 1791739080084)
+@@ -1,10 +1,0 @@
+-from django.db import models
+-
+-class Product(models.Model):
+-    name = models.CharField(max_length=200)
+-    description = models.TextField()
+-    price = models.DecimalField(max_digits=10, decimal_places=2)
+-    image = models.ImageField(upload_to='products/', blank=True, null=True)
+-
+-    def __str__(self):
+-        return self.name

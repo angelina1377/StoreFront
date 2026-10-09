@@ -1,0 +1,72 @@
+Index: catalog/templates/catalog/partials/base.html
+===================================================================
+diff --git a/catalog/templates/catalog/partials/base.html b/catalog/templates/catalog/partials/base.html
+new file mode 100644
+--- /dev/null	(date 1791739080075)
++++ b/catalog/templates/catalog/partials/base.html	(date 1791739080075)
+@@ -0,0 +1,10 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <title>Title</title>
++</head>
++<body>
++
++</body>
++</html>
+\ No newline at end of file
+Index: catalog/templates/catalog/partials/product_list.html
+===================================================================
+diff --git a/catalog/templates/catalog/partials/product_list.html b/catalog/templates/catalog/partials/product_list.html
+new file mode 100644
+--- /dev/null	(date 1791739080078)
++++ b/catalog/templates/catalog/partials/product_list.html	(date 1791739080078)
+@@ -0,0 +1,10 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8">
++  <title>Title</title>
++</head>
++<body>
++
++</body>
++</html>
+\ No newline at end of file
+Index: catalog/templates/catalog/partials/add_product.html
+===================================================================
+diff --git a/catalog/templates/catalog/partials/add_product.html b/catalog/templates/catalog/partials/add_product.html
+new file mode 100644
+--- /dev/null	(date 1791739080077)
++++ b/catalog/templates/catalog/partials/add_product.html	(date 1791739080077)
+@@ -0,0 +1,10 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <title>Title</title>
++</head>
++<body>
++
++</body>
++</html>
+\ No newline at end of file
+Index: catalog/templates/catalog/partials/product_detail.html
+===================================================================
+diff --git a/catalog/templates/catalog/partials/product_detail.html b/catalog/templates/catalog/partials/product_detail.html
+new file mode 100644
+--- /dev/null	(date 1791739080080)
++++ b/catalog/templates/catalog/partials/product_detail.html	(date 1791739080080)
+@@ -0,0 +1,10 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <title>Title</title>
++</head>
++<body>
++
++</body>
++</html>
+\ No newline at end of file
