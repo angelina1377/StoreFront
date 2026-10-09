@@ -1,19 +1,44 @@
-{% extends "catalog/base.html" %}
-{% block content %}
-  <h1>Товары</h1>
-  {% for product in page_obj %}
-    <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
-      <h3>{{ product.name }}</h3>
-      <p>{{ product.description|truncatechars:100 }}</p> <!-- Обрезка до 100 символов -->
-      <p><b>{{ product.price }} руб.</b></p>
-      <a href="{% url 'catalog:product_detail' pk=product.pk %}">Подробнее</a>
-    </div>
-  {% endfor %}
+{% extends 'catalog/base.html' %}
 
-  <!-- Пагинация -->
-  {% if page_obj.has_other_pages %}
-    {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}">Назад</a>{% endif %}
-    Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
-    {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}">Вперед</a>{% endif %}
-  {% endif %}
+{% block title %}Каталог товаров{% endblock %}
+
+{% block content %}
+<h1 class="mb-4 text-center">Наши товары</h1>
+
+{% if products %}
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for product in products %}
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0">
+
+                <!-- Блок с картинкой -->
+                <div class="card-img-top d-flex align-items-center justify-content-center bg-light" style="height: 250px;">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" class="img-fluid" alt="{{ product.name }}" style="max-height: 230px; object-fit: contain;">
+                    {% else %}
+                        <span class="text-muted">Нет фото</span>
+                    {% endif %}
+                </div>
+
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title fw-bold">{{ product.name }}</h5>
+
+                    <!-- Описание обрезается троеточием, если слишком длинное -->
+                    <p class="card-text flex-grow-1 text-truncate">{{ product.description }}</p>
+
+                    <div class="d-flex justify-content-between align-items-center mt-auto pt-3 border-top">
+                        <strong class="text-primary fs-5">{{ product.price }} руб.</strong>
+                        <a href="#" class="btn btn-primary btn-sm">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="alert alert-info text-center">
+        В каталоге пока нет товаров. Добавьте первый товар через админку или форму добавления!
+    </div>
+{% endif %}
 {% endblock %}
+
