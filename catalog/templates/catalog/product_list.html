@@ -1,0 +1,19 @@
+{% extends "catalog/base.html" %}
+{% block content %}
+  <h1>Товары</h1>
+  {% for product in page_obj %}
+    <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.description|truncatechars:100 }}</p> <!-- Обрезка до 100 символов -->
+      <p><b>{{ product.price }} руб.</b></p>
+      <a href="{% url 'catalog:product_detail' pk=product.pk %}">Подробнее</a>
+    </div>
+  {% endfor %}
+
+  <!-- Пагинация -->
+  {% if page_obj.has_other_pages %}
+    {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}">Назад</a>{% endif %}
+    Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+    {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}">Вперед</a>{% endif %}
+  {% endif %}
+{% endblock %}
