@@ -1,0 +1,98 @@
+Index: catalog/templates/catalog/partials/base.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/catalog/templates/catalog/partials/base.html b/catalog/templates/catalog/partials/base.html
+new file mode 100644
+--- /dev/null	(date 1791739073418)
++++ b/catalog/templates/catalog/partials/base.html	(date 1791739073418)
+@@ -0,0 +1,10 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <title>Title</title>
++</head>
++<body>
++
++</body>
++</html>
+\ No newline at end of file
+Index: catalog/templates/catalog/partials/add_product.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/catalog/templates/catalog/partials/add_product.html b/catalog/templates/catalog/partials/add_product.html
+new file mode 100644
+--- /dev/null	(date 1791739073419)
++++ b/catalog/templates/catalog/partials/add_product.html	(date 1791739073419)
+@@ -0,0 +1,10 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <title>Title</title>
++</head>
++<body>
++
++</body>
++</html>
+\ No newline at end of file
+Index: catalog/templates/catalog/partials/product_list.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/catalog/templates/catalog/partials/product_list.html b/catalog/templates/catalog/partials/product_list.html
+new file mode 100644
+--- /dev/null	(date 1791739073421)
++++ b/catalog/templates/catalog/partials/product_list.html	(date 1791739073421)
+@@ -0,0 +1,10 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8">
++  <title>Title</title>
++</head>
++<body>
++
++</body>
++</html>
+\ No newline at end of file
+Index: catalog/templates/catalog/partials/product_detail.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/catalog/templates/catalog/partials/product_detail.html b/catalog/templates/catalog/partials/product_detail.html
+new file mode 100644
+--- /dev/null	(date 1791739073417)
++++ b/catalog/templates/catalog/partials/product_detail.html	(date 1791739073417)
+@@ -0,0 +1,10 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <title>Title</title>
++</head>
++<body>
++
++</body>
++</html>
+\ No newline at end of file
+diff --git a/catalog/forms.py b/catalog/forms.py
+new file mode 100644
+diff --git a/catalog/admin.py b/catalog/admin.py
+new file mode 100644
+diff --git a/catalog/tests.py b/catalog/tests.py
+new file mode 100644
+diff --git a/catalog/models.py b/catalog/models.py
+new file mode 100644
+diff --git a/catalog/urls.py b/catalog/urls.py
+new file mode 100644
+diff --git a/catalog/__init__.py b/catalog/__init__.py
+new file mode 100644
+diff --git a/catalog/migrations/__init__.py b/catalog/migrations/__init__.py
+new file mode 100644
