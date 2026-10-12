@@ -1,0 +1,21 @@
+{% extends "catalog/base.html" %}
+
+{% block title %}Блог{% endblock %}
+
+{% block content %}
+<h1>Наши статьи</h1>
+{% for post in posts %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <h3><a href="{% url 'blog:blog_detail' post.pk %}">{{ post.title }}</a></h3>
+      <p class="text-muted">Опубликовано: {{ post.created_at|date:"d.m.Y" }} | Просмотров: {{ post.views }}</p>
+      {% if post.preview_image %}
+        <img src="{{ post.preview_image.url }}" class="img-fluid" style="max-height: 150px;">
+      {% endif %}
+      <p>{{ post.content|truncatechars:100 }}</p>
+    </div>
+  </div>
+{% empty %}
+  <p>Пока нет опубликованных статей.</p>
+{% endfor %}
+{% endblock %}
