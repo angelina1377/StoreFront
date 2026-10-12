@@ -1,17 +1,7 @@
-# Виртуальное окружение
-.venv/
-venv/
-env/
-
-# База данных и медиа (не коммитьте реальные файлы)
-db.sqlite3
-media/
-
-# Python
 __pycache__/
-*.py[cod]
-*\$py.class
-*.so
+*.pyc
+*.pyo
+*.pyd
 .Python
 build/
 develop-eggs/
@@ -28,13 +18,3 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-
-# IDE
-.idea/
-.vscode/
-*.swp
-*.swo
-
-# Прочее
-.DS_Store
-Thumbs.db
