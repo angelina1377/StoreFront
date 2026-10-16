@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "catalog/base.html" %}
+
+{% block title %}Добавить товар{% endblock %}
+
+{% block content %}
+<h1>Добавить товар</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
+<a href="{% url 'catalog:product_list' %}" class="btn btn-outline-secondary mt-2">Отмена</a>
+{% endblock %}
