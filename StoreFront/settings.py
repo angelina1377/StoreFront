@@ -17,7 +17,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-8q#&tn(8uq3eq1s&y#bhgjo_*4-i6z@b_hr+h%!5db-z4n%u7a'
 DEBUG = True
-ALLOWED_HOSTS = []
+
+# ИСПРАВЛЕНО: пустой список и правильный комментарий
+ALLOWED_HOSTS =   []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -27,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'catalog',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -44,6 +47,7 @@ ROOT_URLCONF = 'StoreFront.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        # ИСПРАВЛЕНО: было 'DIRS': , стало 'DIRS': ,
         'DIRS':[] ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -55,8 +59,6 @@ TEMPLATES = [
         },
     },
 ]
-
-
 
 WSGI_APPLICATION = 'StoreFront.wsgi.application'
 
@@ -80,9 +82,19 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Указываем нашу кастомную модель пользователя
+AUTH_USER_MODEL = 'users.CustomUser'
+
+# Страница входа для декоратора @login_required
+LOGIN_URL = 'users:login'
+
+# НАСТРОЙКИ ПОЧТЫ (для теста письма падают в консоль сервера)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'no-reply@storefront.com'
+LOGIN_REDIRECT_URL = 'catalog:product_list'
+

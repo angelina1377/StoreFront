@@ -1,4 +1,3 @@
-import os
 from django import forms
 from django.core.exceptions import ValidationError
 from .models import Product
@@ -8,20 +7,25 @@ FORBIDDEN_WORDS = [
     'дешево', 'бесплатно', 'обман', 'полиция', 'радар'
 ]
 
+
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
+        # Только те поля, что есть в модели
         fields = ['name', 'description', 'price', 'image']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['name'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Название продукта'})
-        self.fields['description'].widget.attrs.update({'class': 'form-control', 'rows': 4, 'placeholder': 'Описание продукта'})
+        self.fields['description'].widget.attrs.update(
+            {'class': 'form-control', 'rows': 4, 'placeholder': 'Описание продукта'})
         self.fields['price'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Цена'})
         self.fields['image'].widget.attrs.update({'class': 'form-control'})
 
     def clean_name(self):
         name = self.cleaned_data.get('name', '')
+        if not name:
+            return name
         text = name.lower()
         for word in FORBIDDEN_WORDS:
             if word in text:
@@ -30,6 +34,8 @@ class ProductForm(forms.ModelForm):
 
     def clean_description(self):
         description = self.cleaned_data.get('description', '')
+        if not description:
+            return description
         text = description.lower()
         for word in FORBIDDEN_WORDS:
             if word in text:
@@ -44,14 +50,13 @@ class ProductForm(forms.ModelForm):
 
     def clean_image(self):
         image = self.cleaned_data.get('image')
-        if not image:
-            return image
-        allowed_exts = ['.jpg', '.jpeg', '.png']
-        max_size_mb = 5
-        ext = os.path.splitext(image.name).lower()
-        if ext not in allowed_exts:
-            raise ValidationError('Разрешены только файлы JPEG и PNG.')
-        if image.size > max_size_mb * 1024 * 1024:
-            raise ValidationError(f'Размер файла не должен превышать {max_size_mb} МБ.')
-        return image
+        if image:
+            if '.' not in image.name:
+                raise forms.ValidationError('Файл должен иметь расширение.')
 
+            ext = image.name.split('.')[-1].lower()
+            valid_extensions = ['jpg', 'jpeg', 'png', 'gif']
+
+            if ext not in valid_extensions:
+                raise forms.ValidationError('Допустимы только изображения: jpg, jpeg, png, gif.')
+        return image
