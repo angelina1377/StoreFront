@@ -1,3 +1,22 @@
 # Default ignored files
-/shelf/
-/workspace.xml
+# Виртуальное окружение
+venv/
+.env
+
+# База данных (локальная)
+db.sqlite3
+
+# Кэш Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Медиафайлы (картинки товаров)
+media/
+
+# Файлы IDE
+.idea/
+.vscode/
+*.swp
+*.swo
