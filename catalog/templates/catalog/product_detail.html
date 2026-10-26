@@ -1,0 +1,17 @@
+<h1>{{ product.name }}</h1>
+<p>Владелец: {{ product.owner.username }}</p>
+<p>Опубликован: {{ product.is_published|yesno:"Да,Нет" }}</p>
+
+{% if user == product.owner or user.has_perm('catalog.change_product') %}
+  <a href="{% url 'edit_product' pk=product.pk %}">Редактировать</a> |
+  <a href="{% url 'delete_product' pk=product.pk %}">Удалить</a>
+{% endif %}
+
+{% if user == product.owner or user.has_perm('catalog.can_unpublish_product') %}
+  <a href="{% url 'toggle_publish' pk=product.pk %}">
+    {{ product.is_published|yesno:"Снять с публикации,Опубликовать" }}
+  </a>
+{% endif %}
+<br><br>
+<a href="{% url 'product_list' %}">Вернуться к списку</a>
+
