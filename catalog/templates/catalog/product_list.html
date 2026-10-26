@@ -1,0 +1,12 @@
+<h1>Список продуктов</h1>
+<ul>
+  {% for product in products %}
+    <li>
+      <a href="{% url 'product_detail' pk=product.pk %}">{{ product.name }}</a>
+      {% if product.is_published %}(Опубликован){% else %}(Черновик){% endif %}
+    </li>
+  {% empty %}
+    <li>Продуктов пока нет.</li>
+  {% endfor %}
+</ul>
+<a href="{% url 'create_product' %}">Создать продукт</a>
