@@ -1,13 +1,34 @@
-<<<<<<< HEAD
-=======
-# Default ignored files
+# Виртуальное окружение
 .venv/
-__pycache__/
-*.pyc
-.DS_Store
+venv/
+env/
+
+# IDE (PyCharm / IntelliJ)
+.idea/
+*.iml
+
+# Базы данных (SQLite)
+*.sqlite3
 db.sqlite3
 
-
-
->>>>>>> develop
-.idea/
+# Файлы кэша Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
