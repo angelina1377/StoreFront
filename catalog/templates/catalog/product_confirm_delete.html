@@ -1,0 +1,6 @@
+<p>Удалить продукт «{{ product.name }}»?</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Да, удалить</button>
+</form>
+<a href="{% url 'product_detail' pk=product.pk %}">Отмена</a>

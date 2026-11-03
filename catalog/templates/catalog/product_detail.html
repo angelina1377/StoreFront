@@ -1,0 +1,27 @@
+<h1>{{ product.name }}</h1>
+
+<p><strong>Категория:</strong> {{ product.category.name }}</p>
+<p><strong>Цена:</strong> {{ product.price }} ₽</p>
+<p><strong>Владелец:</strong> {{ product.owner.username }}</p>
+<p><strong>Опубликован:</strong> {{ product.is_published|yesno:"Да,Нет" }}</p>
+
+<hr>
+
+<p>{{ product.description|linebreaks }}</p>
+
+<!-- Кнопки управления (видны только владельцу или админу) -->
+{% if user == product.owner or user.is_staff %}
+  <a href="{% url 'edit_product' pk=product.pk %}" class="btn">Редактировать</a> |
+  <a href="{% url 'delete_product' pk=product.pk %}" class="btn">Удалить</a>
+
+  <!-- Кнопка публикации/снятия (если есть кастомное право или просто для владельца) -->
+  {% if user == product.owner or user.has_perm('catalog.can_unpublish_product') %}
+    <a href="{% url 'toggle_publish' pk=product.pk %}" class="btn">
+      {{ product.is_published|yesno:"Снять с публикации,Опубликовать" }}
+    </a>
+  {% endif %}
+{% endif %}
+
+<br><br>
+<a href="{% url 'category_products' product.category.pk %}">← Назад в категорию</a>
+<a href="{% url 'product_list' %}">Вернуться к общему каталогу</a>
