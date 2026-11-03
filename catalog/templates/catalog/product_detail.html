@@ -1,0 +1,5 @@
+<h1>{{ product.name }}</h1>
+<p>Категория: {{ product.category.name }}</p>
+<p>Цена: {{ product.price }} ₽</p>
+<p>{{ product.description }}</p>
+<a href="{% url 'category_products' product.category.pk %}">← Назад в категорию</a>
