@@ -1,4 +1,5 @@
 <h1>{{ product.name }}</h1>
+<<<<<<< HEAD
 <p>Владелец: {{ product.owner.username }}</p>
 <p>Опубликован: {{ product.is_published|yesno:"Да,Нет" }}</p>
 
@@ -15,3 +16,9 @@
 <br><br>
 <a href="{% url 'product_list' %}">Вернуться к списку</a>
 
+=======
+<p>Категория: {{ product.category.name }}</p>
+<p>Цена: {{ product.price }} ₽</p>
+<p>{{ product.description }}</p>
+<a href="{% url 'category_products' product.category.pk %}">← Назад в категорию</a>
+>>>>>>> develop
